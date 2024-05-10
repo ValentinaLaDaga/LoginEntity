@@ -1,0 +1,39 @@
+﻿@model UtentiListViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form asp-controller="Home" asp-action="Iscrizione" method="post" enctype="multipart/form-data">
+        <caption>
+            <h2></h2>
+        </caption>
+
+        <input type="hidden" name="id" value="" />
+
+        <fieldset class="form-group">
+            <label>User Name</label>
+            <input type="text" value="" class="form-control" name="Nome"  required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Email</label>
+            <input type="text" value="" class="form-control" name="Email" >
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Country</label>
+            <input type="text" value="" class="form-control" name="Nazione">
+        </fieldset>
+
+		<fieldset class="form-group">
+            <label>password</label>
+            <input type="text" value="" class="form-control" name="Password" >
+        </fieldset>
+        
+        
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+
