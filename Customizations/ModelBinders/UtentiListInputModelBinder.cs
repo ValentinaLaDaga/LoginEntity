@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LoginEntity.Models.InputModels;
+using LoginEntity.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
@@ -22,10 +23,20 @@ namespace LoginEntity.Customizations.ModelBinders
             string email = bindingContext.ValueProvider.GetValue("Email").FirstValue;
             string nazione = bindingContext.ValueProvider.GetValue("Nazione").FirstValue;
             string password = bindingContext.ValueProvider.GetValue("Password").FirstValue;
-            int id = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Id").FirstValue);
+            int id;
+            try
+            {
+                id = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Id").FirstValue);
+            }
+            catch
+            {
+                id = 0;
+            }
+            
+            //int id = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Id").FirstValue);
  
             //Creiamo l'istanza del CourseListInputModel
-            var inputModel = new UtentiListInputModel(nome,email,nazione,password, id);
+            var inputModel = new UtentiListInputModel(nome,email,nazione,password,id);
 
             //Impostiamo il risultato per notificare che la creazione è avvenuta con successo
             bindingContext.Result = ModelBindingResult.Success(inputModel);
