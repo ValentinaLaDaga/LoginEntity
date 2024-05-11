@@ -1,0 +1,39 @@
+@model UtentiViewModel
+@{
+    ViewData["Title"] = "Modifica Utente";
+}
+
+<div class="text-center">
+    <form asp-controller="Utenti" asp-action="UpdateRecord" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+        <caption>
+            <h2></h2>
+        </caption>
+
+        <input type="hidden" name="id" value="@Model.Id" />
+
+        <fieldset class="form-group">
+            <label>User Name</label>
+            <input type="text" value="@Model.Nome" class="form-control" name="Nome"  required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Email</label>
+            <input type="text" value="@Model.Email" class="form-control" name="Email" >
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Country</label>
+            <input type="text" value="@Model.Nazione" class="form-control" name="Nazione">
+        </fieldset>
+
+		<fieldset class="form-group">
+            <label>password</label>
+            <input type="text" value="@Model.Password" class="form-control" name="Password" >
+        </fieldset>
+        
+        
+
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+

@@ -9,7 +9,6 @@ using LoginEntity.Models.Services.Application;
 using Microsoft.Data.Sqlite;
 using LoginEntity.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Data.Sqlite;
 using LoginEntity.Models.InputModels;
 
 namespace LoginEntity.Controllers
