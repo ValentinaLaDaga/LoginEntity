@@ -12,6 +12,10 @@ namespace LoginEntity.Models.InputModels
     [ModelBinder(BinderType = typeof(UtentiListInputModelBinder))]
     public class UtentiListInputModel
     {
+
+  
+        public int Id { get; }
+
         public string Email { get; }
 
         public string Nazione { get; }
@@ -19,10 +23,10 @@ namespace LoginEntity.Models.InputModels
         public string Password { get; }
 
         public string Nome { get; }
-        public int Id { get; }
 
 
-        public UtentiListInputModel(string nome, string email, string nazione, string password, int id)
+
+        public UtentiListInputModel(int id, string nome, string email, string nazione, string password)
         {
             this.Nome = nome;
             this.Email = email;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace LoginEntity.Models.Entities
 {
+
     public partial class Iscritto
     {
         public int Id { get; set; }
@@ -10,5 +11,7 @@ namespace LoginEntity.Models.Entities
         public string Email { get; set; }
         public string Nazione { get; set; }
         public string Password { get; set; }
+        
+
     }
 }

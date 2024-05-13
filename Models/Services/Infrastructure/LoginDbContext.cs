@@ -31,7 +31,8 @@ namespace LoginEntity.Models.Services.Infrastructure
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .ValueGeneratedNever();
+                    //.ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Email)
                     .IsRequired()

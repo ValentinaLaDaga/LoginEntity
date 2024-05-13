@@ -72,14 +72,16 @@ namespace LoginEntity.Models.Services.Application
             try
             {
                 var utente = new Iscritto
-                {
+                {                   
                     Nome = model.Nome,
                     Email = model.Email,
                     Nazione = model.Nazione,
-                    Password = model.Password
+                    Password = model.Password,
+                    
                 };
                 dbContext.Iscritto.Add(utente);
                 await dbContext.SaveChangesAsync();
+                //Recuperato l'ltlimo Id inserito
                 return true;
             }
             catch (Exception ex)
@@ -144,7 +146,9 @@ namespace LoginEntity.Models.Services.Application
                     Id = utente.Id,
                     Nome = utente.Nome,
                     Email = utente.Email,
-                    Nazione = utente.Nazione
+                    Nazione = utente.Nazione,
+                    //Password = utente.Password,
+                
                 };
             }
             return null;
