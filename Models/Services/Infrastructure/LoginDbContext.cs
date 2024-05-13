@@ -8,12 +8,7 @@ namespace LoginEntity.Models.Services.Infrastructure
 {
     public partial class LoginDbContext : DbContext
     {
-        public LoginDbContext()
-        {
-        }
-
-        public LoginDbContext(DbContextOptions<LoginDbContext> options)
-            : base(options)
+        public LoginDbContext(DbContextOptions<LoginDbContext> options) : base(options)
         {
         }
 
@@ -58,7 +53,7 @@ namespace LoginEntity.Models.Services.Infrastructure
                     .HasColumnName("password")
                     .HasColumnType("VARCHAR(45)");
 
-                entity.HasKey(iscritto => iscritto.Id);
+                //entity.HasKey(iscritto => iscritto.Id);
             });
 
             OnModelCreatingPartial(modelBuilder);

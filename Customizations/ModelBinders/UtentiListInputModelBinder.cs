@@ -23,6 +23,9 @@ namespace LoginEntity.Customizations.ModelBinders
             string email = bindingContext.ValueProvider.GetValue("Email").FirstValue;
             string nazione = bindingContext.ValueProvider.GetValue("Nazione").FirstValue;
             string password = bindingContext.ValueProvider.GetValue("Password").FirstValue;
+            int id = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Id").FirstValue);
+            
+            /*
             int id;
             try
             {
@@ -32,6 +35,7 @@ namespace LoginEntity.Customizations.ModelBinders
             {
                 id = 0;
             }
+            */
             
             //int id = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Id").FirstValue);
  

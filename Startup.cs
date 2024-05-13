@@ -32,14 +32,20 @@ namespace LoginEntity
             //services.AddTransient<ILoginService, AdoNetLoginService>();
 
             services.AddTransient<ILoginService, EfCoreLoginService>();
-            services.AddDbContext<LoginDbContext>();
             services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
+            /*
             services.AddDbContextPool<LoginDbContext>(optionsBuilder =>
             {
                 string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");//questo metodo mi permette di recuperare dal file di configurazione appsettings.json il valore di default della sezione ConnectionStrings 
                 //string connectionString = Configuration.GetConnectionString("Default");
                 optionsBuilder.UseSqlite(connectionString);
-            });
+            });   */
+
+            string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
+            services.AddDbContextPool<LoginDbContext>(options =>
+            {
+                options.UseSqlite(connectionString);
+            });         
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
@@ -57,12 +63,9 @@ namespace LoginEntity
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            
+            app.UseEndpoints(routeBuilder => {
+                routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

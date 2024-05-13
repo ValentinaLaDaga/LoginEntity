@@ -43,10 +43,11 @@ namespace LoginEntity.Models.Services.Application
                 .Where(iscritto => iscritto.Nome.Contains(model.Search))
                 .Select(iscritto => new UtentiViewModel
                 {
-                    Id = (int)iscritto.Id,
+                    Id = iscritto.Id,
                     Nome = iscritto.Nome,
                     Email = iscritto.Email,
                     Nazione = iscritto.Nazione,
+                    Password = iscritto.Password
                 });
 
             List<UtentiViewModel> utenti = await queryLinq.ToListAsync();
@@ -140,7 +141,7 @@ namespace LoginEntity.Models.Services.Application
             {
                 return new UtentiViewModel
                 {
-                    Id = (int)utente.Id,
+                    Id = utente.Id,
                     Nome = utente.Nome,
                     Email = utente.Email,
                     Nazione = utente.Nazione
