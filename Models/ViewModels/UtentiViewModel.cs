@@ -26,8 +26,6 @@ namespace LoginEntity.Models.ViewModels
                 Email = Convert.ToString(utentiRow["email"]),
                 Nazione = Convert.ToString(utentiRow["nazione"]),
                 Password = Convert.ToString(utentiRow["password"]),
-
-
             };
             return utentiViewModel;
 

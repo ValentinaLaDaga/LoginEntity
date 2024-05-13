@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using LoginEntity.Models.Entities;
+using Microsoft.Extensions.Configuration;
 
 namespace LoginEntity.Models.Services.Infrastructure
 {
@@ -55,6 +57,8 @@ namespace LoginEntity.Models.Services.Infrastructure
                     .IsRequired()
                     .HasColumnName("password")
                     .HasColumnType("VARCHAR(45)");
+
+                entity.HasKey(iscritto => iscritto.Id);
             });
 
             OnModelCreatingPartial(modelBuilder);

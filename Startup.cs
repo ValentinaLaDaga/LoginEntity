@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoginEntity
 {
@@ -28,8 +29,18 @@ namespace LoginEntity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<ILoginService, AdoNetLoginService>();
+            //services.AddTransient<ILoginService, AdoNetLoginService>();
+
+            services.AddTransient<ILoginService, EfCoreLoginService>();
+            services.AddDbContext<LoginDbContext>();
             services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
+            services.AddDbContextPool<LoginDbContext>(optionsBuilder =>
+            {
+                string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");//questo metodo mi permette di recuperare dal file di configurazione appsettings.json il valore di default della sezione ConnectionStrings 
+                //string connectionString = Configuration.GetConnectionString("Default");
+                optionsBuilder.UseSqlite(connectionString);
+            });
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
