@@ -49,7 +49,7 @@ public class LoginController : Controller
             catch (Exception ex)
             {
                 // Gestisci eventuali eccezioni durante l'inserimento nell'utente nel database
-                ModelState.AddModelError(string.Empty, "Si è verificato un errore durante l'inserimento dell'utente.");
+                ModelState.AddModelError(string.Empty, "ERRORE: inserimento dell'utente.");
             }
 
             return RedirectToAction("Index", "Home");
