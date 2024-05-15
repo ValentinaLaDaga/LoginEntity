@@ -136,23 +136,33 @@ namespace LoginEntity.Models.Services.Application
             return viewModel;
         } */
 
-        public async Task<UtentiViewModel> RecuperaUtente(int id)
+     public async Task<UtentiViewModel> RecuperaUtente(int id)
+{
+    // Questo metodo asincrono recupera un utente dal database in base all'ID fornito.
+    // La parola chiave "async" indica che questo metodo può essere eseguito in modo asincrono.
+
+    // Utilizza il DbContext per accedere ai dati del database.
+    var utente = await dbContext.Iscritto.FindAsync(id);
+    
+    // Controlla se è stato trovato un utente con l'ID specificato.
+    if (utente != null)
+    {
+        // Se è stato trovato un utente, crea un'istanza di UtentiViewModel
+        // e popola i suoi campi con i dati dell'utente recuperato dal database.
+        return new UtentiViewModel
         {
-            var utente = await dbContext.Iscritto.FindAsync(id);
-            if (utente != null)
-            {
-                return new UtentiViewModel
-                {
-                    Id = utente.Id,
-                    Nome = utente.Nome,
-                    Email = utente.Email,
-                    Nazione = utente.Nazione,
-                    //Password = utente.Password,
-                
-                };
-            }
-            return null;
-        }
+            Id = utente.Id,
+            Nome = utente.Nome,
+            Email = utente.Email,
+            Nazione = utente.Nazione,
+            // La password di solito non viene inclusa nei dati restituiti per motivi di sicurezza.
+            // Quindi, è stato commentato qui.
+            Password = utente.Password,
+        };
+    }
+    // Se non è stato trovato alcun utente con l'ID specificato, restituisce null.
+    return null;
+}
         
     }
 }
