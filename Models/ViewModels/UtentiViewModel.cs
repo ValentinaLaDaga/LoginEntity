@@ -9,12 +9,9 @@ namespace LoginEntity.Models.ViewModels
     public class UtentiViewModel
     {
         public int Id { get; set; }
-
         public string Nome { get; set; }
-
         public string Email { get; set; }
         public string Nazione { get; set; }
-
         public string Password { get; set; }
 
         public static UtentiViewModel FromDataRow(DataRow utentiRow)
@@ -28,7 +25,6 @@ namespace LoginEntity.Models.ViewModels
                 Password = Convert.ToString(utentiRow["password"]),
             };
             return utentiViewModel;
-
         }
 
     }

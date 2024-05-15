@@ -11,7 +11,5 @@ namespace LoginEntity.Models.Entities
         public string Email { get; set; }
         public string Nazione { get; set; }
         public string Password { get; set; }
-        
-
     }
 }

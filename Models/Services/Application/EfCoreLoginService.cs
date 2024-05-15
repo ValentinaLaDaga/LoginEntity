@@ -20,7 +20,7 @@ namespace LoginEntity.Models.Services.Application
             this.dbContext=dbContext;
         }
 
-/*
+        /*
         public async Task<List<UtentiViewModel>> GetUtentiAsync(SearchListInputModel model)
         {
             IQueryable<Iscritto> baseQuery =  dbContext.Utenti;
@@ -34,7 +34,7 @@ namespace LoginEntity.Models.Services.Application
 
             return utenti; 
         }
-*/
+        */
 
         public async Task<List<UtentiViewModel>> GetUtentiAsync(SearchListInputModel model)
         {
@@ -124,7 +124,7 @@ namespace LoginEntity.Models.Services.Application
             }
         }
 
-/*
+        /*
         public async Task<UtentiViewModel> RecuperaUtente(int id)
         {
             IQueryable<UtentiViewModel> queryLinq = dbContext.Utenti
@@ -147,12 +147,10 @@ namespace LoginEntity.Models.Services.Application
                     Nome = utente.Nome,
                     Email = utente.Email,
                     Nazione = utente.Nazione,
-                    //Password = utente.Password,
-                
+                    Password = utente.Password,
                 };
             }
             return null;
-        }
-        
+        } 
     }
 }
